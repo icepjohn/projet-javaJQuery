@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="C:\CDI\Exo\Java jquery html\Exo Banque\liste.js"></script>
+</head>
+<body>
+                    <!-- page une -->
+
+
+<div data-role="page" data-theme="b" id="pageone">
+        <div data-role="navbar">
+            <ul>
+                <li>
+                        <div data-role="header" style="padding: none">
+                        <a href="#" class="ui-btn ui-icon-home ui-btn-icon-left">Home</a>
+                        <a href="#pagetwo" class="ui-btn ui-icon-search ui-btn-icon-right">Search</a>
+                                <h1>Bankster</h1>
+                        </div>
+                </li>
+            </ul>
+        </div>
+
+    <p style="text-align: center;">Bienvenue a la banque des pirates de l'informatique</p>
+
+    <div data-role="main" style="text-align:center">
+    <div data-role="content" data-type="horizontal">
+        <a href="#Identification" data-rel="popup" data-position-to="window" data-transition="flip" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left">Identification</a>
+        <div data-role="popup" id="Identification">
+        <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+            <div data-role="main" id="login">
+                <div data-role="header">
+                    <h1>Login</h1>
+                </div>
+                    <!-- start content -->
+                <div data-role="main" data-inset="true"> 
+                <form name="loginform" id="formulaire" >
+                            <fieldset >
+                                <label for="email">Email:</label>
+                                <input type="text" name="email" id="email" value=""  />
+                                <label for="password">Password:</label>
+                                <input type="password" name="password" id="password" value="" />
+                                <input type="button" id="btnLogin"  value="Login";"/>
+                            </fieldset>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+                    <!-- end content -->
+    <div data-role="main" id="page">
+    <div data-role="center" class="ui-btn">
+     <ul style="padding: 0px">
+        <li>
+            <a href="#pagetrois" data-role="button" data-icon="location" data-iconpos="left">Liste des agences<br></a></li>
+        <li>
+            <a href="#pagequatre" data-role="button" data-icon="info" data-iconpos="left">Bourse<br></a></li>
+        <li>  
+            <a href="#pagecinq" data-role="button" data-icon="phone" data-iconpos="left">Annuaire<br></a></li>
+        </li>
+    </ul>
+    </div>
+<div style="width: 2px; height: 100px; position: relative;">
+            <img src="C:\CDI\Exo\Java jquery html\Exo Banque\image.jpg" alt="image">
+</div>
+    <div data-role="footer" style="margin: 80px">
+        <h1>Caribou</h1>
+    </div>
+</div>
+</div>
+
+                    <!-- page deux -->
+
+
+<div data-role="page" data-theme="b" id="pagetwo">
+    <div data-role="navbar">
+    <div data-role="header">
+        <a href="#pageone" class="ui-btn ui-icon-home ui-btn-icon-left">Home</a>
+        <a href="#pagetwo" class="ui-btn ui-icon-search ui-btn-icon-right">Search</a>
+        <h1>Bankster</h1>
+    </div>
+    </div>
+    <div data-role="main">
+<input type="text" name="fullname" id="fullname" placeholder="Tapez votre recherche..">
+    </div>
+    <div style="width: 288px; height: 100px; position: relative;">
+            <img src="C:\CDI\Exo\Java jquery html\Exo Banque\image.jpg" alt="image">
+</div>
+    <div data-role="footer" style="margin: 80px">
+
+        <h1>Caribou</h1>
+    </div>
+</div>
+
+                    <!-- page trois -->
+
+
+<div data-role="page" data-theme="b" id="pagetrois">
+     
+      <div data-role="navbar">
+      <div data-role="header">
+        <a href="#pageone" class="ui-btn ui-icon-home ui-btn-icon-left">Home</a>
+        <a href="#pagetwo" class="ui-btn ui-icon-search ui-btn-icon-right">Search</a>
+         <h1>Bankster</h1>
+        <a href="#pagetrois">Liste des agences<br></a>
+    </div>
+    </div>
+    <div data-role="main">
+        <label for="fullname">Agences :</label>
+        <form class="ui-filterable">
+        <input type="text" name="fullname" id="fullname" placeholder="Name..">
+    </form>
+    <ul data-role="listview" data-filter="true" data-input="#fullname" data-autodividers="true" data-inset="true">
+      <li><a href="#">Agence des pirates</a></li>
+      <li><a href="#">Caraibes</a></li>
+      <li><a href="#">Maldives</a></li>
+      <li><a href="#">Fions</a></li>
+      <li><a href="#">Escrot</a></li>
+      <li><a href="#">Piraterie</a></li>
+    </ul>
+    </div>
+
+    <div data-role="footer" style="margin: 80px">
+        <h1>Caribou</h1>
+    </div>
+</div>
+                    <!-- page quatre -->
+
+
+<div data-role="page" data-theme="b" id="pagequatre">
+    <div data-role="navbar">
+    <div data-role="header">
+      <h1>Bankster</h1>
+        <a href="#pageone" class="ui-btn ui-icon-home ui-btn-icon-left">Home</a>
+        <a href="#pagetwo" class="ui-btn ui-icon-search ui-btn-icon-right">Search</a>
+        <a href="#pagequatre">Bourses</a>
+    </div>
+    </div>
+    <div data-role="main">
+    <p>Toutes la Bourses en direct live!!!</p>
+    </div>
+
+    <div data-role="footer" style="margin: 80px">
+        <h1>Caribou</h1>
+    </div>
+</div>
+                    <!-- page cinq -->
+
+
+<div data-role="page" data-theme="b" id="pagecinq">
+    <div data-role="navbar">
+    <div data-role="header">
+      <h1>Bankster</h1>
+        <a href="#pageone" class="ui-btn ui-icon-home ui-btn-icon-left">Home</a>
+        <a href="#pagetwo" class="ui-btn ui-icon-search ui-btn-icon-right">Search</a>
+        <a href="#pagecinq">Annuaires<br></a>
+    </div>
+    </div>
+    <div data-role="main">
+        <label for="fullname">Annuaires :</label>
+        <input type="text" name="fullname" id="fullname" placeholder="Name..">
+    </div>
+
+    <div data-role="footer">
+        <h1>Caribou</h1 style="margin: 80px">
+    </div>
+</div>
+
+                    <!-- page compte -->
+
+
+<div data-role="page" data-theme="b" id="pagecompte">
+    <div data-role="navbar">
+    <div data-role="header">
+      <h1>Bankster</h1>
+        <a href="#pageone" class="ui-btn ui-icon-home ui-btn-icon-left">Home</a>
+        <a href="#pagetwo" class="ui-btn ui-icon-search ui-btn-icon-right">Search</a>
+    </div>
+    </div>
+    <div data-role="main">
+<p>Bonjours Mr <br></p>
+<p>votre compte a des millions a sont actif</p>
+    </div>
+
+    <div data-role="footer" style="margin: 80px">
+        <h1>Caribou</h1>
+    </div>
+</div>
+
+</body>
+</html>

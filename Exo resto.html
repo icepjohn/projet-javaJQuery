@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="C:\CDI\Exo\Java jquery html\styles.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	var resto= {
+
+		"restaurants" : [
+
+		{
+			"address" : {
+							"street" : "2 Avenue",
+							"zipcode" : "10075",
+							"building" : "1480",
+							"coord" : [ -73.9557413, 40.7720266 ]
+			},
+			"borough" : "Manhattan",
+			"cuisine" : "Italian",
+			"grades" : [
+			{
+				"date" : "2014-10-01T00:00:00Z",
+				"grade" : "A",
+				"score" : 11
+			},
+			{
+				"date" : "2014-01-16T00:00:00Z",
+				"grade" : "B",
+				"score" : 17
+			}
+			],
+			"name" : "Vella",
+			"restaurant_id" : "41704620"
+		}
+
+		,
+
+		{
+			"address" : {
+							"street" : "4 chantier",
+							"zipcode" : "10075",
+							"building" : "1548",
+							"coord" : [ -73.9557413, 40.7720266 ]
+			},
+			"borough" : "Toronto",
+			"cuisine" : "Italian",
+			"grades" : [
+			{
+				"date" : "2014-10-01T00:00:00Z",
+				"grade" : "A",
+				"score" : 11
+			},
+			{
+				"date" : "2014-01-16T00:00:00Z",
+				"grade" : "B",
+				"score" : 17
+			}
+			],
+			"name" : "Vella",
+			"restaurant_id" : "41704620"
+		}
+		]
+
+	};	      
+
+	$(document).ready(function(){
+
+		$('button').click(function() {		
+
+			var cp = $('#_CP').val();
+			
+			$('#list').html("");
+			$('#list').append('<th>Zip Code</th><th>Street</th><th>Cuisine</th>');
+
+			$.each(resto.restaurants, function(idx, elem){
+
+				if (elem.address.zipcode == cp) {
+					$('#list').append('<tr id="'+ elem.restaurant_id +'"><td>'+ elem.address.zipcode +'</td><td>'+ elem.address.street + elem.borough +'</td><td>'+  elem.cuisine +'</td></tr>');
+				}
+			});
+		})
+		$("#list").on("click","tr",function(){
+
+			var id = this.id;
+
+			$('#info').html("");
+			$('#info').append('<th>Zip Code</th><th>Street</th><th>Cuisine</th><th>building</th><th>coord</th>');
+
+			
+
+
+						$.each(resto.restaurants, function(idx, elem){
+
+							if (elem.restaurant_id == id) {
+								$('#info').append('<tr><td>'+ elem.address.zipcode +'</td><td>'+ elem.address.street + elem.borough +'</td><td>'+  elem.cuisine +'</td><td>'+elem.address.building + '</td><td>' + elem.address.coord + '</td></tr>');
+				}
+			});
+        $("#detail").toggle();
+
+    });
+
+		$('#list').show();
+		$('#list').on("click","tr",function(){console.log(this.elem)});
+		$('#info').show();
+		$('#info').on("click","tr",function(){console.log(this.elem)})
+	})
+
+</script>
+</head>
+<body>
+<h1 align="center">Recherche de restaurants par Code Postal</h1>
+
+	<div id="recherche">
+		<label for="codepostal">Code postal : </label>
+		<input id= '_CP' type="number" name="codepostal" placeholder="Ex:59100">
+		<button>Trouver</button>
+	</div>
+	<div1 id="index">
+		<table id='list'>
+			
+		</table>
+	</div1>	
+
+	</div>
+	<div id="detail" >
+		<table id='info'>
+			
+		</table>
+	</div>
+
+
+</body>
+</html>

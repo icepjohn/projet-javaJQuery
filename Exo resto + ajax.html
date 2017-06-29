@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="C:\CDI\Exo\Java jquery html\styles.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+
+$(document).ready(function(){
+
+	$('button').click(function() {
+
+		var postcode=$("#postcode").val()
+
+		$.get('http://192.168.15.58:9090/myapp/restaurants/parcode?codePostale="+postcode+"', function(data, status){
+				 	showTable(data);
+});
+
+// Procédure qui affiche la liste des restaurants //
+function showTable(data) {
+
+restos = jQuery.parseJSON(data);
+
+var table = "<tr><th>Restaurant</th><th>CP</th><th>Type</th></tr>";
+var occur = 0;
+for (var i = 0; i < restos.length; i++) 
+{
+		table += "<tr id="+restos[i].restaurant_id+"><td>" +
+			restos[i].name + "</td><td>" +
+			restos[i].address.zipcode + "</td><td>" +
+			restos[i].cuisine + "</td></tr>";
+}
+if(restos.length != 0)
+{
+	$("#list").html(table);
+	$(".left-part").slideDown();
+	$(".top-part").hide();
+	$("#newSearch").show();
+	$(".right-part").animate({width: '0%'});
+	$(".left-part").animate({width: '100%'});
+	$("#details").html("");
+}
+else
+{
+	$("#postcode").val("");
+	alert("Aucun restaurant trouvé pour ce code postal");
+}
+
+}
+		
+		});
+
+		var cp = $('#_CP').val();
+		
+		$('#list').html("");
+		$('#list').append('<th>Zip Code</th><th>Street</th><th>Cuisine</th>');
+
+		$.each(resto.restaurants, function(idx, elem){
+
+			if (elem.address.zipcode == cp) {
+				$('#list').append('<tr id="'+ elem.restaurant_id +'"><td>'+ elem.address.zipcode +'</td><td>'+ elem.address.street + elem.borough +'</td><td>'+  elem.cuisine +'</td></tr>');
+			}
+		});
+	})
+	$("#list").on("click","tr",function(){
+
+		var id = this.id;
+
+		$('#info').html("");
+		$('#info').append('<th>Zip Code</th><th>Street</th><th>Cuisine</th><th>building</th><th>coord</th>');
+
+		
+
+
+					$.each(resto.restaurants, function(idx, elem){
+
+						if (elem.restaurant_id == id) {
+							$('#info').append('<tr><td>'+ elem.address.zipcode +'</td><td>'+ elem.address.street + elem.borough +'</td><td>'+  elem.cuisine +'</td><td>'+elem.address.building + '</td><td>' + elem.address.coord + '</td></tr>');
+			}
+		});
+    $("#detail").toggle();
+
+});
+
+	$('#list').show();
+	$('#list').on("click","tr",function(){console.log(this.elem)});
+	$('#info').show();
+	$('#info').on("click","tr",function(){console.log(this.elem)})
+
+
+</script>
+</head>
+<body>
+<h1 align="center">Recherche de restaurants par Code Postal</h1>
+
+<div id="recherche">
+	<label for="codepostal">Code postal : </label>
+	<input id= '_CP' type="number" name="codepostal" placeholder="Ex:59100">
+	<button>Trouver</button>
+</div>
+<div1 id="index">
+	<table id='list'>
+		
+	</table>
+</div1>	
+
+</div>
+<div id="detail" >
+	<table id='info'>
+		
+	</table>
+</div>
+
+
+</body>
+</html>
